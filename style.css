@@ -1,0 +1,32 @@
+/* ===
+Fonts
+=== */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap");
+
+/* ===
+Variables
+=== */
+:root {
+  --clr-white: #fff;
+  --clr-black: rgb(0, 0, 0);
+}
+
+/* ===
+Global Styles
+=== */
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.5;
+}
+
+/* ===
+Global Classes
+=== */
