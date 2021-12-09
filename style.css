@@ -29,7 +29,7 @@ body {
 }
 img {
   width: 100%;
-  max-width: 20em;
+  max-width: 15em;
 }
 
 /* ===
@@ -39,7 +39,7 @@ body {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  background-color: var(--clr-light-blue);
+  background-color: var(--clr-black);
 }
 .main-section {
   background: linear-gradient(#fff, #fff) padding-box,
@@ -54,7 +54,7 @@ body {
 .image-div {
   margin-bottom: 2em;
 }
-.forecast,
+.current-weather,
 .location {
   margin-bottom: 1em;
 }
