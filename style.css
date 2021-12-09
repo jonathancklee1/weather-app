@@ -9,6 +9,7 @@ Variables
 :root {
   --clr-white: #fff;
   --clr-black: rgb(0, 0, 0);
+  --clr-light-blue: #8ecae6;
 }
 
 /* ===
@@ -26,7 +27,37 @@ body {
   font-family: "Open Sans", sans-serif;
   line-height: 1.5;
 }
+img {
+  width: 100%;
+  max-width: 20em;
+}
 
 /* ===
 Global Classes
 === */
+body {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background-color: var(--clr-light-blue);
+}
+.main-section {
+  background: linear-gradient(#fff, #fff) padding-box,
+    linear-gradient(to right, #9c20aa, #fb3570) border-box;
+  border-radius: 20px;
+  text-align: center;
+  overflow: hidden;
+  padding: 2em;
+  max-width: 90%;
+  border: 7px solid transparent;
+}
+.image-div {
+  margin-bottom: 2em;
+}
+.forecast,
+.location {
+  margin-bottom: 1em;
+}
+.temp {
+  font-size: 4rem;
+}
