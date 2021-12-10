@@ -1,12 +1,16 @@
+import { API_KEY_WEATHER, API_KEY_LOCATION } from "./apikey.js";
 // Declare variables
 const locationText = document.querySelector(".location");
 const currWeatherText = document.querySelector(".current-weather");
 const tempText = document.querySelector(".temp");
-const locationKey = "79d8ec34ad1c4c5fbd1f8f1af1b86efb";
-const weatherKey = "6198a78d1d8cd305131d520fcdb434aa";
+const locationKey = API_KEY_LOCATION;
+const weatherKey = API_KEY_WEATHER;
 
 // HTML Geolocation API- retrieves user's latitude and longitude
 navigator.geolocation.getCurrentPosition((position) => {
+  locationText.innerHTML = `Your location: Loading...`;
+  currWeatherText.innerHTML = `Weather: Loading...`;
+  tempText.innerHTML = `Loading...`;
   showLocation(position.coords.latitude, position.coords.longitude);
   showWeather(position.coords.latitude, position.coords.longitude);
 });
