@@ -1,7 +1,7 @@
 /* ===
 Fonts
 === */
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bungee&display=swap");
 
 /* ===
 Variables
@@ -24,8 +24,9 @@ Global Styles
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Bungee", cursive;
   line-height: 1.5;
+  /* font-size: .7rem; */
 }
 img {
   width: 100%;
@@ -40,19 +41,19 @@ body {
   display: grid;
   place-items: center;
   background-color: rgb(52, 89, 136);
+  color: var(--clr-black);
 }
 .main-section {
-  background: linear-gradient(#fff, #fff) padding-box,
-    linear-gradient(to right, #9c20aa, #fb3570) border-box;
+  background-color: var(--clr-white);
   border-radius: 20px;
   text-align: center;
   overflow: hidden;
   padding: 2em;
   max-width: 90%;
-  border: 7px solid transparent;
+
   box-shadow: 0px 10px 15px 2px rgba(0, 0, 0, 0.51);
 }
-.image-div {
+.weather-img {
   margin-bottom: 2em;
 }
 .current-weather,
