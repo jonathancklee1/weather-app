@@ -7,10 +7,14 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>MyWeatherApp</title>
    <link rel="stylesheet" href="style.css">
+   <audio id="audio" src="./audio/rain.mp3" loop></audio>
 </head>
 
 <body>
    <div class="main-section">
+      <p class="toggle-text">Toggle ambient sounds</p>
+      <input type="checkbox" id="checkbox" class="checkbox">
+      <label for="checkbox" class="label"><div class="ball"></div></label>
       <img class="weather-img" src="" alt="GIF of current weather">
       <h2 class="location"></h2>
       <h2 class="current-weather"></h2>

@@ -10,6 +10,8 @@ Variables
   --clr-white: #fff;
   --clr-black: rgb(0, 0, 0);
   --clr-light-blue: #8ecae6;
+  --clr-green: rgb(3, 141, 3);
+  --clr-red: rgb(255, 0, 0);
 }
 
 /* ===
@@ -62,4 +64,42 @@ body {
 }
 .temp {
   font-size: 4rem;
+}
+
+/* ===
+Toggle
+=== */
+.label {
+  background-color: var(--clr-red);
+  display: flex;
+  height: 2em;
+  width: 3.5em;
+  padding: 0.3em;
+  border-radius: 50px;
+  position: relative;
+  margin-left: auto;
+}
+
+.ball {
+  height: 1.4em;
+  width: 1.4em;
+  background-color: var(--clr-white);
+  position: absolute;
+  border-radius: 50%;
+  transition: transform 0.2s linear;
+}
+.checkbox {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+}
+.checkbox:checked + label {
+  background-color: var(--clr-green);
+}
+.checkbox:checked + .label .ball {
+  transform: translateX(1.5em);
+}
+.toggle-text {
+  text-align: right;
+  margin-bottom: 1em;
 }

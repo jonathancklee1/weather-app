@@ -1,13 +1,16 @@
 // Import
 import { API_KEY_WEATHER, API_KEY_LOCATION } from "./apikey.js";
+
 // Declare variables
 const locationText = document.querySelector(".location");
 const currWeatherText = document.querySelector(".current-weather");
 const tempText = document.querySelector(".temp");
 const weatherImg = document.querySelector(".weather-img");
 const mainSection = document.querySelector(".main-section");
+const checkbox = document.getElementById("checkbox");
 const locationKey = API_KEY_LOCATION;
 const weatherKey = API_KEY_WEATHER;
+var audio = document.getElementById("audio");
 
 // If success get user location and display data
 let onSuccess = (position) => {
@@ -16,6 +19,9 @@ let onSuccess = (position) => {
   tempText.innerHTML = `Loading...`;
   showLocation(position.coords.latitude, position.coords.longitude);
   showWeather(position.coords.latitude, position.coords.longitude);
+  checkbox.addEventListener("change", () => {
+    togglePlay();
+  });
 };
 // If error...alert user
 let onError = (error) => {
@@ -63,33 +69,46 @@ let showWeather = (lat, long) => {
 
       // Change colour of background and text if night >7pm
       if (timeHr > 19) {
-        document.body.style.color = "white";
-        mainSection.style.backgroundColor = "black";
+        document.body.style.color = "var(--clr-white)";
+        mainSection.style.backgroundColor = "var(--clr-black)";
       }
-      // Display gif corresponding to the weather type
+      // Display gif and ambient sounds corresponding to the weather type
       switch (data.weather[0].main) {
         case "Rain":
           weatherImg.src = "./images/Rain.gif";
+          audio.src = "./audio/rain.mp3";
           break;
         case "Drizzle":
           weatherImg.src = "./images/Drizzle.gif";
+          audio.src = "./audio/light-rain.mp3";
           break;
         case "Clear":
-          if (timeHr > 19) {
+          // Night
+          if (timeHr > 18) {
             weatherImg.src = "./images/Clear-Night.gif";
+            audio.src = "./audio/clear-night.mp3";
           } else {
             weatherImg.src = "./images/Clear.gif";
+            audio.src = "./audio/clear.mp3";
           }
           break;
         case "Thunderstorm":
           weatherImg.src = "./images/Thunderstorm.gif";
+          audio.src = "./audio/thunderstorm.mp3";
           break;
         case "Snow":
           weatherImg.src = "./images/Snow.gif";
+          audio.src = "./audio/snow.mp3";
           break;
         default:
           weatherImg.src = "./images/Cloudy.gif";
+          audio.src = "./audio/wind.mp3";
       }
     })
     .catch((error) => alert("Cannot retrieve weather data"));
+};
+
+// Toggles audio on and off based on audio pause state
+let togglePlay = () => {
+  return audio.paused ? audio.play() : audio.pause();
 };
