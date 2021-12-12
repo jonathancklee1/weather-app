@@ -48,7 +48,7 @@ body {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  background: linear-gradient(to right top, #44a1a0, #78cdd7);
+  background: linear-gradient(to right top, #44a1a0, #f4ab58);
   color: var(--clr-dark-grey-blue);
 }
 .main-card {
@@ -116,4 +116,18 @@ Toggle
 .toggle-text {
   text-align: right;
   margin-bottom: 1em;
+}
+
+/* ===
+Footer 
+===*/
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 0.7rem;
 }

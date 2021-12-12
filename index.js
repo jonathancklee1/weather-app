@@ -7,9 +7,11 @@ const currWeatherText = document.querySelector(".current-weather");
 const tempText = document.querySelector(".temp");
 const weatherImg = document.querySelector(".weather-img");
 const mainSection = document.querySelector(".main-card");
+const copyright = document.querySelector(".copyright");
 const checkbox = document.getElementById("checkbox");
 const locationKey = API_KEY_LOCATION;
 const weatherKey = API_KEY_WEATHER;
+const nightTime = 19;
 var audio = document.getElementById("audio");
 
 // If success get user location and display data
@@ -26,17 +28,17 @@ let onSuccess = (position) => {
 // If error...alert user
 let onError = (error) => {
   alert(
-    "Unable to retrieve weather data. Please turn on your location access in the browser or enable location in your mobile setting. Otherwise please use and alternative browser."
+    "Unable to retrieve weather data. Please turn on your location access in the browser or enable location in your mobile setting. Otherwise please use an alternative browser."
   );
   weatherImg.remove();
   // Add an error message
-  var h2Element = document.createElement("h2");
-  var errorMsg = document.createTextNode("Unable to retrieve weather!");
+  const h2Element = document.createElement("h2");
+  const errorMsg = document.createTextNode("Unable to retrieve weather!");
   h2Element.appendChild(errorMsg);
   mainSection.appendChild(h2Element);
 };
-// HTML Geolocation API- retrieves user's latitude and longitude
 
+// HTML Geolocation API- retrieves user's latitude and longitude
 navigator.geolocation.getCurrentPosition(onSuccess, onError);
 // Display location data to user
 let showLocation = (lat, long) => {
@@ -68,7 +70,7 @@ let showWeather = (lat, long) => {
       const timeHr = new Date().getHours();
 
       // Change colour of background and text if night >7pm
-      if (timeHr > 19) {
+      if (timeHr > nightTime) {
         document.body.style.color = "var(--clr-white)";
         mainSection.style.backgroundColor = "var(--clr-black)";
         document.body.style.background =
@@ -87,7 +89,7 @@ let showWeather = (lat, long) => {
           break;
         case "Clear":
           // Night
-          if (timeHr > 18) {
+          if (timeHr > nightTime) {
             weatherImg.src = "./images/Clear-Night.gif";
             audio.src = "./audio/clear-night.mp3";
           } else {
@@ -114,4 +116,11 @@ let showWeather = (lat, long) => {
 // Toggles audio on and off based on audio pause state
 let togglePlay = () => {
   return audio.paused ? audio.play() : audio.pause();
+};
+
+// Load footer with copyright information on page load
+window.onload = () => {
+  const year = new Date().getFullYear();
+  copyright.innerHTML =
+    "&copy; " + year + " Jonathan Lee. All rights reserved.";
 };
