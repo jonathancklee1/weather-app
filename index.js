@@ -6,7 +6,7 @@ const locationText = document.querySelector(".location");
 const currWeatherText = document.querySelector(".current-weather");
 const tempText = document.querySelector(".temp");
 const weatherImg = document.querySelector(".weather-img");
-const mainSection = document.querySelector(".main-section");
+const mainSection = document.querySelector(".main-card");
 const checkbox = document.getElementById("checkbox");
 const locationKey = API_KEY_LOCATION;
 const weatherKey = API_KEY_WEATHER;
@@ -71,7 +71,10 @@ let showWeather = (lat, long) => {
       if (timeHr > 19) {
         document.body.style.color = "var(--clr-white)";
         mainSection.style.backgroundColor = "var(--clr-black)";
+        document.body.style.background =
+          "linear-gradient(to right top, #364652, #2D1E2F)";
       }
+
       // Display gif and ambient sounds corresponding to the weather type
       switch (data.weather[0].main) {
         case "Rain":

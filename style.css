@@ -10,6 +10,7 @@ Variables
   --clr-white: #fff;
   --clr-black: rgb(0, 0, 0);
   --clr-light-blue: #8ecae6;
+  --clr-dark-grey-blue: #465568;
   --clr-green: rgb(3, 141, 3);
   --clr-red: rgb(255, 0, 0);
 }
@@ -28,11 +29,16 @@ Global Styles
 body {
   font-family: "Bungee", cursive;
   line-height: 1.5;
-  /* font-size: .7rem; */
+  font-size: 0.8rem;
 }
 img {
   width: 100%;
   max-width: 15em;
+}
+@media screen and (min-width: 800px) {
+  body {
+    font-size: 1rem;
+  }
 }
 
 /* ===
@@ -42,21 +48,28 @@ body {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  background-color: rgb(52, 89, 136);
-  color: var(--clr-black);
+  background: linear-gradient(to right top, #44a1a0, #78cdd7);
+  color: var(--clr-dark-grey-blue);
 }
-.main-section {
-  background-color: var(--clr-white);
+.main-card {
+  background: linear-gradient(
+    to right bottom,
+    rgba(187, 187, 187, 0.7),
+    rgba(173, 173, 173, 0.3)
+  );
   border-radius: 20px;
   text-align: center;
   overflow: hidden;
   padding: 2em;
   max-width: 90%;
-
-  box-shadow: 0px 10px 15px 2px rgba(0, 0, 0, 0.51);
+  max-height: 95vh;
+  box-shadow: 0px 10px 15px 2px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(2rem);
+  border-top: 2px solid rgba(255, 255, 255, 0.6);
+  border-left: 2px solid rgba(255, 255, 255, 0.6);
 }
 .weather-img {
-  margin-bottom: 2em;
+  margin-bottom: 0.7em;
 }
 .current-weather,
 .location {
@@ -91,7 +104,8 @@ Toggle
 .checkbox {
   opacity: 0;
   position: absolute;
-  left: 0;
+  right: 3em;
+  top: 5.5em;
 }
 .checkbox:checked + label {
   background-color: var(--clr-green);
