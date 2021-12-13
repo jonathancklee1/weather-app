@@ -7,22 +7,49 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>MyWeatherApp</title>
    <link rel="stylesheet" href="style.css">
-   <audio id="audio" src="./audio/rain.mp3" loop></audio>
+   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+      integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+   <audio id="audio" src="" loop></audio>
 </head>
 
 <body>
-   <main class="main-card">
-      <p class="toggle-text">Toggle ambient sounds</p>
-      <input type="checkbox" id="checkbox" class="checkbox">
-      <label for="checkbox" class="label">
-         <div class="ball"></div>
-      </label>
-      <img class="weather-img" src="" alt="GIF of current weather">
-      <h2 class="location"></h2>
-      <h2 class="current-weather"></h2>
-      <h2 class="temp"></h2>
-   </main>
+   <main class="container">
+      <div class="main-card">
+         <div class="card-inner">
+            <div class="card-face card-front">
+               <div class="nav">
+                  <div class="flip">
+                     <p class="flip-text">Flip to Study Timer</p>
+                     <i class="fas fa-redo"></i>
+                  </div>
+                  <div>
+                     <p class="toggle-text">Toggle ambient sounds</p>
+                     <input type="checkbox" id="checkbox" class="checkbox">
+                     <label for="checkbox" class="label">
+                        <div class="ball"></div>
+                     </label>
+                  </div>
 
+               </div>
+
+               <img class="weather-img" src="" alt="GIF of current weather">
+               <h2 class="location"></h2>
+               <h2 class="current-weather"></h2>
+               <h2 class="temp"></h2>
+            </div>
+            <div class="card-face card-back">
+               <div class="flip">
+                  <p class="flip-text">Flip to Weather</p>
+                  <i class="fas fa-redo"></i>
+               </div>
+               <h2>Pomodoro Timer</h2>
+               <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum maxime doloribus voluptatem ullam labore fugiat vel facilis doloremque placeat est.</p>
+               <p id="countdown-timer">00:00:00</p>
+               <h2>Pomodoro Set:</h2>
+            </div>
+         </div>
+      </div>
+   </main>
    <footer>
       <div class="copyright"></div>
    </footer>

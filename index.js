@@ -9,10 +9,21 @@ const weatherImg = document.querySelector(".weather-img");
 const mainSection = document.querySelector(".main-card");
 const copyright = document.querySelector(".copyright");
 const checkbox = document.getElementById("checkbox");
+const container = document.querySelector(".container");
+const cardInner = document.querySelector(".card-inner");
+const flipIcons = document.querySelectorAll(".fa-redo");
+
 const locationKey = API_KEY_LOCATION;
 const weatherKey = API_KEY_WEATHER;
 const nightTime = 19;
 var audio = document.getElementById("audio");
+
+// Toggle flip for each flip button
+flipIcons.forEach((flipIcon) => {
+  flipIcon.addEventListener("click", () => {
+    cardInner.classList.toggle("flipped");
+  });
+});
 
 // If success get user location and display data
 let onSuccess = (position) => {
@@ -71,9 +82,9 @@ let showWeather = (lat, long) => {
 
       // Change colour of background and text if night >7pm
       if (timeHr > nightTime) {
-        document.body.style.color = "var(--clr-white)";
+        container.style.color = "var(--clr-white)";
         mainSection.style.backgroundColor = "var(--clr-black)";
-        document.body.style.background =
+        container.style.background =
           "linear-gradient(to right top, #364652, #2D1E2F)";
       }
 
