@@ -17,6 +17,7 @@ const pomodoroSet = document.getElementById("set-text");
 const playBtn = document.getElementById("play-btn");
 const pauseBtn = document.getElementById("pause-btn");
 const resetBtn = document.getElementById("reset-btn");
+const breakText = document.querySelector(".break-text");
 const locationKey = API_KEY_LOCATION;
 const weatherKey = API_KEY_WEATHER;
 
@@ -40,7 +41,7 @@ playBtn.addEventListener("click", () => {
       updateTimer(time);
     }, 1000);
   } else {
-    alert("Timer is running");
+    return;
   }
 });
 
@@ -69,10 +70,12 @@ function stopInterval() {
 function checkBreak() {
   if (isBreak) {
     time = breakMin * 60;
+    breakText.classList.add("show");
     isBreak = false;
   } else {
     time = startingMin * 60;
     isBreak = true;
+    breakText.classList.remove("show");
     pomodoroSet.innerHTML = `Pomodoro Set: ${setCounter}`;
     setCounter++;
   }
@@ -140,7 +143,7 @@ let showLocation = (lat, long) => {
       console.log(data);
       let path = data.results[0].components;
       //    Set suburb and city from json path
-      locationText.innerHTML = `Your location: ${path.suburb}, ${path.city}`;
+      locationText.innerHTML = `<i class="fas fa-map-marker-alt"></i>\u00A0\u00A0${path.suburb}, ${path.city}`;
     })
     .catch((error) => alert("Cannot retrieve location data"));
 };
@@ -154,7 +157,7 @@ let showWeather = (lat, long) => {
     .then((data) => {
       console.log(data);
       // Set main weather and temperature
-      currWeatherText.innerHTML = `Weather: ${data.weather[0].main}`;
+      currWeatherText.innerHTML = `${data.weather[0].main}`;
       tempText.innerHTML = `${Math.round(data.main.temp)}&deg;C`;
       const timeHr = new Date().getHours();
 

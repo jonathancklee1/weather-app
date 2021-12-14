@@ -11,6 +11,7 @@ Variables
   --clr-black: rgb(0, 0, 0);
   --clr-light-blue: #8ecae6;
   --clr-dark-grey-blue: #465568;
+  --clr-light-grey-blue: #536d86;
   --clr-green: rgb(3, 141, 3);
   --clr-red: rgb(255, 0, 0);
 }
@@ -29,7 +30,7 @@ Global Styles
 body {
   font-family: "Bungee", cursive;
   line-height: 1.5;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 img {
   width: 100%;
@@ -37,7 +38,7 @@ img {
 }
 @media screen and (min-width: 800px) {
   body {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 }
 
@@ -66,7 +67,6 @@ Global Classes
   transition: transform 1s;
   transform-style: preserve-3d;
   text-align: center;
- 
 }
 .card-inner.flipped {
   transform: rotateY(180deg);
@@ -91,11 +91,17 @@ Global Classes
   border-left: 2px solid rgba(255, 255, 255, 0.6);
   border-radius: 20px;
   overflow: hidden;
-   min-height: 500px;
+  min-height: 550px;
 }
 .card-back {
   position: absolute;
   transform: rotateY(180deg);
+}
+.card-back > p {
+  color: var(--clr-light-grey-blue);
+}
+.card-back > h2 {
+  margin-bottom: 0.8em;
 }
 .weather-img {
   margin-bottom: 0.7em;
@@ -111,23 +117,72 @@ Global Classes
   display: flex;
   justify-content: space-between;
 }
+
 /* ===
 Timer
 === */
 #countdown-timer {
-  font-size: 4rem;
+  font-size: 3.5rem;
   position: relative;
-  margin-top: 0.5em;
-  margin-bottom: 0.8em;
+  margin-top: 0.2em;
+  margin-bottom: 0.3em;
+  border: 2px solid var(--clr-light-grey-blue);
+  border-radius: 10px;
 }
 .controls {
   display: flex;
   justify-content: space-evenly;
 }
-.card-back > h3 {
-  margin-bottom: 3em;
+#set-text {
+  font-size: 1rem;
+  margin-bottom: 2em;
+}
+#play-btn,
+#pause-btn,
+#reset-btn {
+  position: relative;
+}
+#play-btn::after,
+#pause-btn::after,
+#reset-btn::after {
+  font-family: "Bungee", cursive;
+  font-size: 0.8rem;
+  position: absolute;
+  left: -25%;
+  top: 3em;
+  cursor: auto;
+}
+#play-btn::after {
+  content: "Play";
+}
+#pause-btn::after {
+  content: "Pause";
+  left: -40%;
+}
+#reset-btn::after {
+  content: "Reset";
+}
+.break-text {
+  font-size: 1.3rem;
+  margin-bottom: 0.5em;
+  color: var(--clr-light-grey-blue);
+  border: 2px solid var(--clr-light-grey-blue);
+  border-radius: 15px;
+  display: none;
+}
+.break-text.show {
+  display: block;
 }
 
+@media screen and (min-width: 800px) {
+  #set-text {
+    font-size: 1.3rem;
+    margin-bottom: 2.5em;
+  }
+  #countdown-timer {
+    margin-top: 0.5em;
+  }
+}
 /* ===
 Flip
 === */
@@ -143,7 +198,7 @@ i {
 }
 i:hover,
 i:focus {
-  color: #84a8bd;
+  color: #758ba7;
   cursor: pointer;
 }
 
@@ -198,4 +253,5 @@ footer {
 .copyright {
   text-align: center;
   font-size: 0.7rem;
+  color: var(--clr-dark-grey-blue);
 }
