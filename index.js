@@ -6,17 +6,95 @@ const locationText = document.querySelector(".location");
 const currWeatherText = document.querySelector(".current-weather");
 const tempText = document.querySelector(".temp");
 const weatherImg = document.querySelector(".weather-img");
-const mainSection = document.querySelector(".main-card");
 const copyright = document.querySelector(".copyright");
 const checkbox = document.getElementById("checkbox");
+const cardFront = document.querySelector(".card-front");
 const container = document.querySelector(".container");
 const cardInner = document.querySelector(".card-inner");
 const flipIcons = document.querySelectorAll(".fa-redo");
-
+const countdownTimer = document.getElementById("countdown-timer");
+const pomodoroSet = document.getElementById("set-text");
+const playBtn = document.getElementById("play-btn");
+const pauseBtn = document.getElementById("pause-btn");
+const resetBtn = document.getElementById("reset-btn");
 const locationKey = API_KEY_LOCATION;
 const weatherKey = API_KEY_WEATHER;
+
 const nightTime = 19;
-var audio = document.getElementById("audio");
+const startingMin = 25;
+const breakMin = 5;
+let setCounter = 0;
+let isBreak = false;
+let ambAudio = document.getElementById("amb-audio");
+let timerAudio = document.getElementById("timer-audio");
+let time = 0;
+var startTimer;
+
+checkBreak();
+
+// Start timer
+playBtn.addEventListener("click", () => {
+  if (startTimer === undefined) {
+    // Updates timer every 1 second
+    startTimer = setInterval(() => {
+      updateTimer(time);
+    }, 1000);
+  } else {
+    alert("Timer is running");
+  }
+});
+
+// Reset timer back to 25 minutes
+resetBtn.addEventListener("click", () => {
+  setCounter = 0;
+  isBreak = false;
+  time = startingMin * 60;
+  countdownTimer.innerHTML = "25:00";
+  stopInterval();
+  startTimer = undefined;
+});
+
+// Pauses timer
+pauseBtn.addEventListener("click", () => {
+  stopInterval();
+  startTimer = undefined;
+});
+
+// Stops interval
+function stopInterval() {
+  clearInterval(startTimer);
+}
+
+// Check if study time or break time
+function checkBreak() {
+  if (isBreak) {
+    time = breakMin * 60;
+    isBreak = false;
+  } else {
+    time = startingMin * 60;
+    isBreak = true;
+    pomodoroSet.innerHTML = `Pomodoro Set: ${setCounter}`;
+    setCounter++;
+  }
+}
+
+// Countdown Timer
+function updateTimer(duration) {
+  duration -= 1;
+  let mins = Math.floor(duration / 60);
+  let secs = duration % 60;
+  console.log(mins, secs);
+  if (secs < 10) {
+    secs = "0" + secs;
+  }
+  if (mins == 0 && secs == "00") {
+    checkBreak();
+    timerAudio.src = "./audio/alarm.mp3";
+    timerAudio.play();
+  }
+  countdownTimer.innerHTML = `${mins}:${secs}`;
+  time--;
+}
 
 // Toggle flip for each flip button
 flipIcons.forEach((flipIcon) => {
@@ -46,7 +124,7 @@ let onError = (error) => {
   const h2Element = document.createElement("h2");
   const errorMsg = document.createTextNode("Unable to retrieve weather!");
   h2Element.appendChild(errorMsg);
-  mainSection.appendChild(h2Element);
+  cardFront.appendChild(h2Element);
 };
 
 // HTML Geolocation API- retrieves user's latitude and longitude
@@ -83,7 +161,6 @@ let showWeather = (lat, long) => {
       // Change colour of background and text if night >7pm
       if (timeHr > nightTime) {
         container.style.color = "var(--clr-white)";
-        mainSection.style.backgroundColor = "var(--clr-black)";
         container.style.background =
           "linear-gradient(to right top, #364652, #2D1E2F)";
       }
@@ -92,33 +169,33 @@ let showWeather = (lat, long) => {
       switch (data.weather[0].main) {
         case "Rain":
           weatherImg.src = "./images/Rain.gif";
-          audio.src = "./audio/rain.mp3";
+          ambAudio.src = "./audio/rain.mp3";
           break;
         case "Drizzle":
           weatherImg.src = "./images/Drizzle.gif";
-          audio.src = "./audio/light-rain.mp3";
+          ambAudio.src = "./audio/light-rain.mp3";
           break;
         case "Clear":
           // Night
           if (timeHr > nightTime) {
             weatherImg.src = "./images/Clear-Night.gif";
-            audio.src = "./audio/clear-night.mp3";
+            ambAudio.src = "./audio/clear-night.mp3";
           } else {
             weatherImg.src = "./images/Clear.gif";
-            audio.src = "./audio/clear.mp3";
+            ambAudio.src = "./audio/clear.mp3";
           }
           break;
         case "Thunderstorm":
           weatherImg.src = "./images/Thunderstorm.gif";
-          audio.src = "./audio/thunderstorm.mp3";
+          ambAudio.src = "./audio/thunderstorm.mp3";
           break;
         case "Snow":
           weatherImg.src = "./images/Snow.gif";
-          audio.src = "./audio/snow.mp3";
+          ambAudio.src = "./audio/snow.mp3";
           break;
         default:
           weatherImg.src = "./images/Cloudy.gif";
-          audio.src = "./audio/wind.mp3";
+          ambAudio.src = "./audio/wind.mp3";
       }
     })
     .catch((error) => alert("Cannot retrieve weather data"));
@@ -126,7 +203,7 @@ let showWeather = (lat, long) => {
 
 // Toggles audio on and off based on audio pause state
 let togglePlay = () => {
-  return audio.paused ? audio.play() : audio.pause();
+  return ambAudio.paused ? ambAudio.play() : ambAudio.pause();
 };
 
 // Load footer with copyright information on page load
