@@ -95,6 +95,8 @@ Global Classes
   min-height: 550px;
 }
 .card-back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
   position: absolute;
   transform: rotateY(180deg);
 }
