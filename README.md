@@ -1,5 +1,5 @@
 ### Weather and Study Companion
-================================================================================
+--------------------------------------------------------------------------------
 
 ### Project Overview
 
@@ -13,11 +13,13 @@ This project aims to incorporate two popular application functions into one, to 
 - Day and night colour theme
 - Pomodoro style timer - 25 & 5 minute timer with standard action buttons
 
-#### Made with
+### Made with
 
 - HTML, CSS and JavaScript.
 - Weather art are original pieces of work.
-- Audio sourced from https://mixkit.co/ and https://freesound.org/. All audio are free of use.
+- Audio sourced from https://mixkit.co/ and https://freesound.org/. All audio are free of use and comply to their respective license.
 - APIs generated from https://openweathermap.org/ and https://opencagedata.com/.
 
-#### Preview
+### Preview
+
+Check out the [live site] (https://confident-tesla-4709ee.netlify.app/)
