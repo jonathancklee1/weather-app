@@ -22,4 +22,4 @@ This project aims to incorporate two popular application functions into one, to 
 
 ### Preview
 
-Check out the [live site] (https://confident-tesla-4709ee.netlify.app/)
+Check out the [live site](https://confident-tesla-4709ee.netlify.app/)
