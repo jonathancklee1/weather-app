@@ -17,9 +17,9 @@ This project aims to incorporate two popular application functions into one, to 
 
 - HTML, CSS and JavaScript.
 - Weather art are original pieces of work.
-- Audio sourced from https://mixkit.co/ and https://freesound.org/. All audio are free of use and comply to their respective license.
-- APIs generated from https://openweathermap.org/ and https://opencagedata.com/.
+- Audio sourced from https://mixkit.co/ and https://freesound.org/. All audio are free of use and comply to their respective license for non-commercial use.
+- APIs generated from https://openweathermap.org/ and https://opencagedata.com/. All API used are open sourced.
 
 ### Preview
 
-Check out the [live site](https://confident-tesla-4709ee.netlify.app/)
+Check out the [live site](https://confident-tesla-4709ee.netlify.app/)!
