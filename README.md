@@ -23,3 +23,6 @@ This project aims to incorporate two popular application functions into one, to 
 ### Preview
 
 Check out the [live site](https://confident-tesla-4709ee.netlify.app/)!
+
+### Notes 
+Please ensure that location is allowed for the device you are using to accurately display weather. If location errors still occur, please switch to Chrome for best experience.

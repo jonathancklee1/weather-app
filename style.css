@@ -58,7 +58,7 @@ Global Classes
   width: 90%;
   max-width: 550px;
   border-radius: 20px;
-  perspective: 800px;
+  perspective: 1000px;
 }
 .card-inner {
   position: relative;
