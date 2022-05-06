@@ -50,9 +50,10 @@ resetBtn.addEventListener("click", () => {
   setCounter = 0;
   isBreak = false;
   time = startingMin * 60;
-  countdownTimer.innerHTML = "25:00";
+  countdownTimer.innerHTML = `${startingMin}:00`;
   stopInterval();
   startTimer = undefined;
+  breakText.classList.remove("show");
 });
 
 // Pauses timer
